@@ -37,6 +37,24 @@
     @media(min-width:768px){.fit__grid{grid-template-columns:repeat(2,1fr)}.engagement__flow{grid-template-columns:repeat(3,1fr)}.demo__frame{grid-template-columns:.9fr 1.1fr;align-items:center}.faq__grid{grid-template-columns:.7fr 1.3fr}.faq__intro{position:sticky;top:120px;align-self:start}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"RPD360","description":"Diagnóstico estratégico e direção consultiva para empresas B2B.","url":"https://fdbarone07.github.io/RPD360/","areaServed":"Brasil","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"}}</script>
+  <style id="desktop-presentation-mode">
+    .presentation-progress{display:none}
+    @media(min-width:1024px) and (min-height:640px){
+      html.presentation-mode{scroll-snap-type:y mandatory;scroll-padding-top:0}
+      html.presentation-mode body{overscroll-behavior-y:none}
+      .presentation-slide,.presentation-panel{height:100svh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+      .presentation-slide{display:flex!important;align-items:center;padding-top:92px!important;padding-bottom:28px!important}
+      .presentation-group{padding:0!important}.presentation-group>.container{display:block!important}
+      .presentation-panel{display:flex;align-items:center;padding:92px 0 28px}
+      .presentation-panel__content{width:100%;transform-origin:center center}
+      .presentation-slide>.container{transform-origin:center center}
+      .presentation-progress{position:fixed;z-index:120;right:18px;top:88px;display:flex;align-items:center;gap:9px;padding:9px 8px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(9,31,33,.78);color:#fff;backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(9,31,33,.18);opacity:.72;transition:opacity .3s ease}
+      .presentation-progress:hover{opacity:1}.presentation-progress__rail{width:3px;height:52px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}.presentation-progress__fill{display:block;width:100%;height:0;background:var(--accent);transition:height .35s ease}.presentation-progress__meta{display:grid;gap:2px;min-width:38px}.presentation-progress__count{font-size:.62rem;font-weight:700;font-variant-numeric:tabular-nums}.presentation-progress__label{max-width:72px;color:rgba(255,255,255,.58);font-size:.46rem;line-height:1.2;text-transform:uppercase;letter-spacing:.07em}
+      .section-head{margin-bottom:clamp(1.8rem,3vw,3rem)}.manifesto__principles{margin-top:36px}.service{min-height:330px;padding:1.8rem}.step{padding-bottom:24px}.fit-card{padding:1.45rem 1.65rem}.engagement__flow{margin-top:28px}
+    }
+    @media(max-width:1023px),(max-height:639px){.presentation-panel,.presentation-panel__content{display:contents!important}.presentation-progress{display:none!important}}
+    @media print{html.presentation-mode{scroll-snap-type:none!important}.presentation-progress{display:none!important}.presentation-slide,.presentation-panel{height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important}.presentation-panel,.presentation-panel__content{display:contents!important}.presentation-group{padding:64px 0!important}.presentation-slide>.container,.presentation-panel__content{zoom:1!important}}
+  </style>
 </head>
 <body>
   <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
@@ -107,6 +125,39 @@
     document.getElementById('year').textContent=new Date().getFullYear();
     console.log('[RPD360:home-ready]',{version:'2.0',sections:document.querySelectorAll('main section').length});
   </script>
+  <script>
+    (()=>{
+      const desktop=matchMedia('(min-width:1024px) and (min-height:640px)');
+      const candidates=[...document.querySelectorAll('main > section')];
+      let built=false,slides=[],observer=null;
+      const labelFor=el=>el.querySelector('.eyebrow')?.textContent.trim()||el.id||'RPD360';
+      function build(){
+        if(built)return;built=true;
+        const target=620;
+        candidates.forEach(section=>{
+          const container=section.querySelector(':scope > .container');
+          if(!container)return;
+          const children=[...container.children];
+          const total=container.scrollHeight;
+          if(total<=target*1.08){section.classList.add('presentation-slide');return}
+          section.classList.add('presentation-group');
+          let group=[],height=0;
+          const flush=()=>{if(!group.length)return;const panel=document.createElement('div');panel.className='presentation-panel';panel.dataset.label=labelFor(section);const inner=document.createElement('div');inner.className='presentation-panel__content';group.forEach(node=>inner.appendChild(node));panel.appendChild(inner);container.appendChild(panel);group=[];height=0};
+          children.forEach(child=>{const h=child.getBoundingClientRect().height;if(group.length&&height+h>target)flush();group.push(child);height+=h});flush();
+        });
+      }
+      function fit(){
+        slides=[...document.querySelectorAll('.presentation-slide,.presentation-panel')];
+        slides.forEach(slide=>{const content=slide.classList.contains('presentation-panel')?slide.querySelector('.presentation-panel__content'):slide.querySelector(':scope > .container');if(!content)return;content.style.zoom='1';const available=innerHeight-124;const needed=content.scrollHeight;content.style.zoom=String(Math.min(1,Math.max(.74,available/needed)))});
+      }
+      function progress(){
+        let hud=document.querySelector('.presentation-progress');if(!hud){hud=document.createElement('aside');hud.className='presentation-progress';hud.setAttribute('aria-hidden','true');hud.innerHTML='<span class="presentation-progress__rail"><i class="presentation-progress__fill"></i></span><span class="presentation-progress__meta"><b class="presentation-progress__count"></b><span class="presentation-progress__label"></span></span>';document.body.appendChild(hud)}
+        observer?.disconnect();observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const index=slides.indexOf(entry.target);hud.querySelector('.presentation-progress__fill').style.height=`${((index+1)/slides.length)*100}%`;hud.querySelector('.presentation-progress__count').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;hud.querySelector('.presentation-progress__label').textContent=entry.target.dataset.label||labelFor(entry.target)}),{threshold:.58});slides.forEach(slide=>observer.observe(slide));
+      }
+      function activate(){if(!desktop.matches){document.documentElement.classList.remove('presentation-mode');return}build();document.documentElement.classList.add('presentation-mode');fit();progress()}
+      addEventListener('keydown',event=>{if(!desktop.matches||!['ArrowDown','PageDown','ArrowUp','PageUp'].includes(event.key))return;const current=slides.reduce((best,slide,i)=>Math.abs(slide.getBoundingClientRect().top)<Math.abs(slides[best].getBoundingClientRect().top)?i:best,0);const direction=['ArrowDown','PageDown'].includes(event.key)?1:-1;const next=Math.max(0,Math.min(slides.length-1,current+direction));if(next!==current){event.preventDefault();slides[next].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});
+      desktop.addEventListener('change',activate);addEventListener('resize',()=>desktop.matches&&fit(),{passive:true});addEventListener('load',activate,{once:true});if(document.readyState==='complete')activate();
+    })();
+  </script>
 </body>
 </html>
-
