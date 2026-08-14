@@ -40,9 +40,9 @@
   <style id="desktop-presentation-mode">
     .presentation-progress{display:none}
     @media(min-width:1024px) and (min-height:640px){
-      html.presentation-mode{scroll-snap-type:y mandatory;scroll-padding-top:0}
+      html.presentation-mode{scroll-snap-type:y proximity;scroll-padding-top:0}
       html.presentation-mode body{overscroll-behavior-y:none}
-      .presentation-slide,.presentation-panel{height:100svh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+      .presentation-slide,.presentation-panel{height:100svh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:normal;overflow:hidden}
       .presentation-slide{display:flex!important;align-items:center;padding-top:92px!important;padding-bottom:28px!important}
       .presentation-group{padding:0!important}.presentation-group>.container{display:block!important}
       .presentation-panel{display:flex;align-items:center;padding:92px 0 28px}
@@ -129,7 +129,7 @@
     (()=>{
       const desktop=matchMedia('(min-width:1024px) and (min-height:640px)');
       const candidates=[...document.querySelectorAll('main > section')];
-      let built=false,slides=[],observer=null;
+      let built=false,slides=[],observer=null,wheelDelta=0,wheelLocked=false,wheelReset=null;
       const labelFor=el=>el.querySelector('.eyebrow')?.textContent.trim()||el.id||'RPD360';
       function build(){
         if(built)return;built=true;
@@ -155,7 +155,10 @@
         observer?.disconnect();observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const index=slides.indexOf(entry.target);hud.querySelector('.presentation-progress__fill').style.height=`${((index+1)/slides.length)*100}%`;hud.querySelector('.presentation-progress__count').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;hud.querySelector('.presentation-progress__label').textContent=entry.target.dataset.label||labelFor(entry.target)}),{threshold:.58});slides.forEach(slide=>observer.observe(slide));
       }
       function activate(){if(!desktop.matches){document.documentElement.classList.remove('presentation-mode');return}build();document.documentElement.classList.add('presentation-mode');fit();progress()}
-      addEventListener('keydown',event=>{if(!desktop.matches||!['ArrowDown','PageDown','ArrowUp','PageUp'].includes(event.key))return;const current=slides.reduce((best,slide,i)=>Math.abs(slide.getBoundingClientRect().top)<Math.abs(slides[best].getBoundingClientRect().top)?i:best,0);const direction=['ArrowDown','PageDown'].includes(event.key)?1:-1;const next=Math.max(0,Math.min(slides.length-1,current+direction));if(next!==current){event.preventDefault();slides[next].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});
+      const currentIndex=()=>slides.reduce((best,slide,i)=>Math.abs(slide.getBoundingClientRect().top)<Math.abs(slides[best].getBoundingClientRect().top)?i:best,0);
+      const go=direction=>{const current=currentIndex();const next=Math.max(0,Math.min(slides.length-1,current+direction));if(next===current)return false;const behavior=matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';if(next===0)scrollTo({top:0,behavior});else slides[next].scrollIntoView({behavior,block:'start'});return true};
+      addEventListener('wheel',event=>{if(!desktop.matches||event.ctrlKey)return;event.preventDefault();if(wheelLocked)return;wheelDelta+=event.deltaY;clearTimeout(wheelReset);wheelReset=setTimeout(()=>wheelDelta=0,160);if(Math.abs(wheelDelta)<24)return;const moved=go(wheelDelta>0?1:-1);wheelDelta=0;if(moved){wheelLocked=true;setTimeout(()=>wheelLocked=false,720)}},{passive:false});
+      addEventListener('keydown',event=>{if(!desktop.matches||!['ArrowDown','PageDown','ArrowUp','PageUp'].includes(event.key))return;event.preventDefault();go(['ArrowDown','PageDown'].includes(event.key)?1:-1)});
       desktop.addEventListener('change',activate);addEventListener('resize',()=>desktop.matches&&fit(),{passive:true});addEventListener('load',activate,{once:true});if(document.readyState==='complete')activate();
     })();
   </script>
