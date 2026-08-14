@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#153B3F">
-  <title>RPD360 — Diagnóstico Digital Consolidado V4 | Ocupacional SS</title>
-  <meta name="description" content="Diagnóstico digital consolidado RPD360 da Ocupacional SS — versão executiva V4, com prioridades, jornada recomendada e condições comerciais atualizadas.">
+  <title>RPD360 — Diagnóstico Digital Consolidado V5 | Ocupacional SS</title>
+  <meta name="description" content="Diagnóstico digital consolidado RPD360 da Ocupacional SS — versão executiva V5, com prioridades, jornada recomendada e condições comerciais atualizadas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
     @media(max-width:760px){.commercial-offer,.commercial-scope,.commercial-terms{grid-template-columns:1fr}.commercial-offer>div{padding:28px 24px}.commercial-offer strong{font-size:clamp(3rem,16vw,5rem)}.commercial-terms{padding:25px 23px}}
   </style>
   <style>
-    /* V4 — camada executiva, navegação contextual e condições comerciais atualizadas */
+    /* V5 — modo de apresentação por rolagem e condições comerciais atualizadas */
     :root{--ink-deep:#0a292c;--paper:#f7f4ed;--gold-soft:#d8be8f}
     body{background:linear-gradient(180deg,var(--paper) 0,var(--bg) 32rem)}
     .reading-progress{position:fixed;inset:0 0 auto;z-index:300;height:3px;background:rgba(21,59,63,.08)}
@@ -69,7 +69,7 @@
     .nav__links a{position:relative}.nav__links a:after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--accent);transition:right .3s ease}.nav__links a:hover:after,.nav__links a.is-active:after{right:0}.nav__links a.is-active{color:var(--primary)}
     .menu-toggle{display:inline-grid;width:44px;height:44px;place-items:center;border:1px solid var(--glass-border);border-radius:50%;background:rgba(255,255,255,.5);color:var(--primary);cursor:pointer}.menu-toggle svg{width:20px}.mobile-drawer{position:fixed;z-index:220;inset:65px 12px auto;padding:14px;border:1px solid rgba(255,255,255,.65);border-radius:22px;background:rgba(14,41,44,.96);box-shadow:0 28px 80px rgba(14,41,44,.32);backdrop-filter:blur(24px);opacity:0;visibility:hidden;transform:translateY(-12px);transition:var(--transition)}.mobile-drawer.is-open{opacity:1;visibility:visible;transform:none}.mobile-drawer a{display:flex;align-items:center;justify-content:space-between;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;text-decoration:none;font-size:.86rem}.mobile-drawer a:last-child{border-bottom:0}.mobile-drawer a:after{content:"↘";color:var(--accent)}
     .hero{background:radial-gradient(circle at 84% 18%,rgba(181,139,70,.16),transparent 26%),radial-gradient(circle at 12% 86%,rgba(40,91,94,.1),transparent 25%)}
-    .hero:after{content:"V4";position:absolute;left:calc(50% - min(610px,calc(50% - 16px)));bottom:32px;color:rgba(21,59,63,.22);font-size:.68rem;font-weight:700;letter-spacing:.18em}
+    .hero:after{content:"V5";position:absolute;left:calc(50% - min(610px,calc(50% - 16px)));bottom:32px;color:rgba(21,59,63,.22);font-size:.68rem;font-weight:700;letter-spacing:.18em}
     .hero__lead{max-width:770px}.hero__dial{filter:drop-shadow(0 32px 55px rgba(21,59,63,.15))}.dial__arc{animation:dial-arrive 1.4s cubic-bezier(.16,1,.3,1) both}.dial__hand{animation:needle-arrive 1.4s .15s cubic-bezier(.16,1,.3,1) both}
     @keyframes dial-arrive{from{transform:rotate(-115deg);opacity:0}to{transform:rotate(-24deg);opacity:1}}@keyframes needle-arrive{from{transform:rotate(-110deg)}to{transform:rotate(-42deg)}}
     .executive-snapshot{position:relative;z-index:2;margin-top:-36px;padding:0 0 clamp(4.5rem,8vw,7rem)}.snapshot-shell{overflow:hidden;border:1px solid rgba(21,59,63,.12);border-radius:32px;background:rgba(255,255,255,.72);box-shadow:0 28px 90px rgba(21,59,63,.12);backdrop-filter:blur(24px)}.snapshot-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:22px 24px;border-bottom:1px solid var(--glass-border)}.snapshot-head strong{font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;color:var(--primary)}.snapshot-head span{font-size:.7rem;color:var(--text-muted)}.snapshot-grid{display:grid}.snapshot-item{position:relative;padding:26px 24px;border-bottom:1px solid var(--glass-border)}.snapshot-item:last-child{border-bottom:0}.snapshot-item b{display:block;font:500 clamp(2.3rem,4vw,3.8rem)/1 Fraunces,serif;letter-spacing:-.055em;color:var(--primary)}.snapshot-item span{display:block;margin-top:9px;color:var(--text-muted);font-size:.76rem}.snapshot-item small{display:block;margin-top:13px;color:var(--accent);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
@@ -90,6 +90,24 @@
     @media(max-width:719px){.executive-snapshot{margin-top:-12px}.snapshot-shell{border-radius:24px}.hero:after{left:14px}.back-top{width:44px;height:44px;right:12px;bottom:12px}.voice__portrait,.voice__portrait-copy{min-height:500px}.voice__photo{object-position:50% 20%}}
     @media print{.reading-progress,.menu-toggle,.mobile-drawer,.back-top,.executive-snapshot{display:none!important}.nav{box-shadow:none}.hero:after{display:none}}
   </style>
+  <style id="desktop-presentation-mode">
+    .presentation-progress{display:none}
+    @media(min-width:1024px) and (min-height:640px){
+      html.presentation-mode{scroll-snap-type:y mandatory;scroll-padding-top:0}
+      html.presentation-mode body{overscroll-behavior-y:none}
+      .presentation-slide,.presentation-panel{height:100svh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+      .presentation-slide{display:flex!important;align-items:center;padding-top:88px!important;padding-bottom:24px!important}
+      .presentation-group{padding:0!important}.presentation-group>.container{display:block!important;width:min(1220px,calc(100% - 44px))}
+      .presentation-panel{display:flex;align-items:center;padding:88px 0 24px}
+      .presentation-panel__content{width:100%;transform-origin:center center}
+      .presentation-slide>.container{transform-origin:center center}
+      .presentation-progress{position:fixed;z-index:120;right:16px;top:86px;display:flex;align-items:center;gap:9px;padding:9px 8px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(13,40,43,.8);color:#fff;backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(13,40,43,.2);opacity:.72;transition:opacity .3s ease}.presentation-progress:hover{opacity:1}
+      .presentation-progress__rail{width:3px;height:52px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}.presentation-progress__fill{display:block;width:100%;height:0;background:var(--accent);transition:height .35s ease}.presentation-progress__meta{display:grid;gap:2px;min-width:38px}.presentation-progress__count{font-size:.6rem;font-weight:700;font-variant-numeric:tabular-nums}.presentation-progress__label{max-width:74px;color:rgba(255,255,255,.58);font-size:.45rem;line-height:1.2;text-transform:uppercase;letter-spacing:.07em}
+      .section__head{margin-bottom:clamp(1.8rem,3vw,3.2rem)}.method-flow,.buyer-panel,.market-implication,.field-callout,.commercial-offer{margin-top:28px}.commercial-scope,.commercial-terms{margin-top:22px}.rollout{margin-top:24px}
+    }
+    @media(max-width:1023px),(max-height:639px){.presentation-panel,.presentation-panel__content{display:contents!important}.presentation-progress{display:none!important}}
+    @media print{html.presentation-mode{scroll-snap-type:none!important}.presentation-progress{display:none!important}.presentation-slide,.presentation-panel{height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important}.presentation-panel,.presentation-panel__content{display:contents!important}.presentation-group{padding:16mm 0!important}.presentation-slide>.container,.presentation-panel__content{zoom:1!important}}
+  </style>
 </head>
 <body>
   <div class="reading-progress no-print" aria-hidden="true"><span class="reading-progress__bar"></span></div>
@@ -97,7 +115,7 @@
     <div class="container nav__inner">
       <a class="brand" href="#inicio" aria-label="RPD360 — início">
         <svg viewBox="0 0 340 340" aria-hidden="true"><circle cx="170" cy="170" r="142" fill="none" stroke="#153B3F" stroke-width="15" stroke-dasharray="475 418" stroke-linecap="round" transform="rotate(-38 170 170)"/><circle cx="170" cy="170" r="92" fill="none" stroke="#153B3F" stroke-width="3" opacity=".35"/><path d="M170 34V306M34 170H306" stroke="#153B3F" stroke-width="3" opacity=".35"/><path d="M170 170L258 92" stroke="#153B3F" stroke-width="13" stroke-linecap="round"/><circle cx="258" cy="92" r="20" fill="#B58B46"/><circle cx="170" cy="170" r="10" fill="#153B3F"/></svg>
-        <span class="brand__name">RPD<b>360</b></span><span class="brand__context">Diagnóstico consolidado · V4</span>
+        <span class="brand__name">RPD<b>360</b></span><span class="brand__context">Diagnóstico consolidado · V5</span>
       </a>
       <div class="nav__links"><a href="#rpd360">RPD360</a><a href="#mercado">Mercado</a><a href="#sintese">Síntese</a><a href="#campo">Visão interna</a><a href="#canais">Canais</a><a href="#prioridades">Prioridades</a></div>
       <button class="btn btn--primary no-print" type="button" onclick="window.print()" aria-label="Imprimir ou salvar relatório em PDF">Salvar em PDF</button>
@@ -496,8 +514,8 @@
     const barObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const fill=entry.target.matches('.bar__fill,.projection__fill,.chart-bar__fill')?entry.target:entry.target.querySelector('.bar__fill,.projection__fill,.chart-bar__fill');if(fill)animateBar(fill);barObserver.unobserve(entry.target)}}),{threshold:.3});
     animatedNumbers.forEach(el=>metricObserver.observe(el));
     barElements.forEach(el=>barObserver.observe(el.closest('.bar__track,.projection__track,.chart-bar')||el));
-    const footerVersion=document.querySelector('.footer__client-copy p');if(footerVersion)footerVersion.innerHTML='Diagnóstico consolidado<br>versão executiva V4<br>14 de agosto de 2026';
-    console.log('[RPD360:report-ready]',{version:'consolidado-v4-comercial',sections:12});
+    const footerVersion=document.querySelector('.footer__client-copy p');if(footerVersion)footerVersion.innerHTML='Diagnóstico consolidado<br>versão executiva V5<br>14 de agosto de 2026';
+    console.log('[RPD360:report-ready]',{version:'consolidado-v5-apresentacao',sections:12});
   </script>
 <script>
   /* Mantém o relatório portátil: a marca da Ocupacional SS viaja dentro do próprio HTML. */
@@ -508,5 +526,37 @@
     });
   })();
 </script>
+  <script>
+    (()=>{
+      const desktop=matchMedia('(min-width:1024px) and (min-height:640px)');
+      const candidates=[...document.querySelectorAll('main > header,main > section')];
+      let built=false,slides=[],observer=null;
+      const labelFor=el=>el.querySelector('.eyebrow')?.textContent.trim()||el.id||el.getAttribute('aria-label')||'Diagnóstico';
+      function build(){
+        if(built)return;built=true;
+        const target=610;
+        candidates.forEach(section=>{
+          const container=section.querySelector(':scope > .container');if(!container)return;
+          if(section.matches('.hero')){section.classList.add('presentation-slide');return}
+          const children=[...container.children];const total=container.scrollHeight;
+          if(total<=target*1.07){section.classList.add('presentation-slide');return}
+          section.classList.add('presentation-group');let group=[],height=0;
+          const flush=()=>{if(!group.length)return;const panel=document.createElement('div');panel.className='presentation-panel';panel.dataset.label=labelFor(section);const inner=document.createElement('div');inner.className='presentation-panel__content';group.forEach(node=>inner.appendChild(node));panel.appendChild(inner);container.appendChild(panel);group=[];height=0};
+          children.forEach(child=>{const h=child.getBoundingClientRect().height;if(group.length&&height+h>target)flush();group.push(child);height+=h});flush();
+        });
+      }
+      function fit(){
+        slides=[...document.querySelectorAll('.presentation-slide,.presentation-panel')];
+        slides.forEach(slide=>{const content=slide.classList.contains('presentation-panel')?slide.querySelector('.presentation-panel__content'):slide.querySelector(':scope > .container');if(!content)return;content.style.zoom='1';const available=innerHeight-116;const needed=content.scrollHeight;content.style.zoom=String(Math.min(1,Math.max(.76,available/needed)))});
+      }
+      function progress(){
+        let hud=document.querySelector('.presentation-progress');if(!hud){hud=document.createElement('aside');hud.className='presentation-progress';hud.setAttribute('aria-hidden','true');hud.innerHTML='<span class="presentation-progress__rail"><i class="presentation-progress__fill"></i></span><span class="presentation-progress__meta"><b class="presentation-progress__count"></b><span class="presentation-progress__label"></span></span>';document.body.appendChild(hud)}
+        observer?.disconnect();observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const index=slides.indexOf(entry.target);hud.querySelector('.presentation-progress__fill').style.height=`${((index+1)/slides.length)*100}%`;hud.querySelector('.presentation-progress__count').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;hud.querySelector('.presentation-progress__label').textContent=entry.target.dataset.label||labelFor(entry.target)}),{threshold:.58});slides.forEach(slide=>observer.observe(slide));
+      }
+      function activate(){if(!desktop.matches){document.documentElement.classList.remove('presentation-mode');return}build();document.documentElement.classList.add('presentation-mode');fit();progress()}
+      addEventListener('keydown',event=>{if(!desktop.matches||!['ArrowDown','PageDown','ArrowUp','PageUp'].includes(event.key))return;const current=slides.reduce((best,slide,i)=>Math.abs(slide.getBoundingClientRect().top)<Math.abs(slides[best].getBoundingClientRect().top)?i:best,0);const direction=['ArrowDown','PageDown'].includes(event.key)?1:-1;const next=Math.max(0,Math.min(slides.length-1,current+direction));if(next!==current){event.preventDefault();slides[next].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});
+      desktop.addEventListener('change',activate);addEventListener('resize',()=>desktop.matches&&fit(),{passive:true});addEventListener('load',activate,{once:true});if(document.readyState==='complete')activate();
+    })();
+  </script>
 </body>
 </html>
