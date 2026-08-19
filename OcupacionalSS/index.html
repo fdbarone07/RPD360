@@ -111,6 +111,9 @@
   <style>
     .persona-entry{position:relative;display:grid;gap:22px;align-items:center;margin-top:18px;padding:clamp(24px,4vw,38px);border:1px solid rgba(181,139,70,.28);border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(232,225,212,.74));overflow:hidden}.persona-entry:after{content:"ICP";position:absolute;right:-12px;bottom:-38px;color:rgba(21,59,63,.045);font:600 clamp(6rem,15vw,11rem)/1 Fraunces,serif;letter-spacing:-.08em}.persona-entry__copy,.persona-entry__action{position:relative;z-index:1}.persona-entry__copy small{display:block;margin-bottom:8px;color:var(--accent);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.persona-entry__copy strong{display:block;color:var(--primary);font:500 clamp(1.45rem,3vw,2.35rem)/1.12 Fraunces,serif}.persona-entry__copy p{max-width:690px;margin:10px 0 0;color:var(--text-muted);font-size:.84rem}.persona-entry__action{display:flex;justify-content:flex-start}@media(min-width:900px){.persona-entry{grid-template-columns:1fr auto}.persona-entry__action{justify-content:flex-end}}
   </style>
+  <style>
+    .diagnostic-download{padding-block:clamp(5rem,9vw,8rem)}.diagnostic-download__grid{position:relative;z-index:1;display:grid;gap:34px;align-items:end}.diagnostic-download h2{margin:16px 0}.diagnostic-download p{max-width:700px;margin:0;color:rgba(255,255,255,.66)}.diagnostic-download__actions{display:grid;gap:10px;justify-items:start}.diagnostic-download__primary{background:var(--accent);border-color:var(--accent);color:#102c2f}.diagnostic-download__secondary{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff}.diagnostic-download__actions small{margin-top:6px;color:rgba(255,255,255,.48);font-size:.65rem}@media(min-width:900px){.diagnostic-download__grid{grid-template-columns:1.25fr .75fr}.diagnostic-download__actions{justify-items:stretch}}
+  </style>
 </head>
 <body>
   <div class="reading-progress no-print" aria-hidden="true"><span class="reading-progress__bar"></span></div>
@@ -125,7 +128,7 @@
       <button class="menu-toggle no-print" type="button" aria-label="Abrir menu do relatório" aria-expanded="false" aria-controls="mobile-drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </nav>
-  <div class="mobile-drawer no-print" id="mobile-drawer" aria-hidden="true"><a href="#rpd360">Método RPD360</a><a href="#mercado">Panorama de mercado</a><a href="#sintese">Síntese do diagnóstico</a><a href="#campo">Visão interna</a><a href="#canais">Ecossistema digital</a><a href="#prioridades">Prioridades</a><a href="#plano">Plano de avanço</a><a href="#proposta-comercial">Proposta</a></div>
+  <div class="mobile-drawer no-print" id="mobile-drawer" aria-hidden="true"><a href="#rpd360">Método RPD360</a><a href="#mercado">Panorama de mercado</a><a href="#sintese">Síntese do diagnóstico</a><a href="#campo">Visão interna</a><a href="#canais">Ecossistema digital</a><a href="#prioridades">Prioridades</a><a href="#plano">Plano de avanço</a><a href="#metodo">Método e limites</a></div>
 
   <main>
     <header class="hero" id="inicio">
@@ -414,22 +417,10 @@
       </div>
     </section>
 
-    <section class="section commercial-section" id="proposta-comercial">
-      <div class="container">
-        <div class="section__head reveal"><span class="eyebrow">11 · Proposta de continuidade</span><h2 class="h1">Do diagnóstico à implementação,<br>com direção e acompanhamento.</h2><p>O programa reúne a aquisição do diagnóstico RPD360 e doze meses de atuação consultiva para transformar as prioridades identificadas em um processo organizado de evolução.</p></div>
-        <div class="commercial-offer reveal">
-          <div class="commercial-offer__reference"><span>Investimento de referência</span><strong>R$ 18.000</strong><p>R$ 6.000 pelo diagnóstico estratégico + 12 mensalidades de R$ 1.000 pelo acompanhamento consultivo.</p></div>
-          <div class="commercial-offer__special"><span>Condição especial para contratação conjunta</span><strong>R$ 15.000</strong><p><b>2 parcelas iniciais de R$ 2.500</b>, cada uma composta por R$ 1.500 do diagnóstico e R$ 1.000 da consultoria, seguidas por <b>10 parcelas mensais de R$ 1.000</b>.</p></div>
-        </div>
-        <div class="commercial-scope reveal"><div><b>Governança com Trello</b><p>O RPD360 apoia a definição e a configuração inicial do quadro, dos campos, responsáveis, prazos e critérios de conclusão. A atualização operacional dos cartões permanece com a equipe da Ocupacional SS.</p></div><div><b>Acompanhamento consultivo</b><p>Definição de prioridades, orientação de conteúdo desde o primeiro mês, coordenação dos profissionais envolvidos, acompanhamento de marcos e validação das entregas, em até uma reunião semanal de duas horas.</p></div><div><b>Execução técnica não incluída</b><p>Desenvolvimento, mídia, produção recorrente de conteúdo, licenças, automações e demais serviços especializados serão contratados diretamente pela <strong>Ocupacional SS</strong>, mediante aprovação prévia de seus custos.</p></div></div>
-        <div class="commercial-terms reveal"><div><span class="eyebrow">Condição de pagamento</span><h3>O diagnóstico é entregue após a formalização.</h3><p>Os <b>R$ 3.000 do diagnóstico</b> são distribuídos nas duas primeiras parcelas apenas como facilidade de pagamento e tornam-se integralmente devidos com sua disponibilização.</p></div><div><span class="eyebrow">Rescisão antecipada</span><h3>Regra proporcional ao período restante.</h3><p>Mediante aviso escrito de 30 dias, permanecem devidos os serviços prestados e eventual saldo do diagnóstico.</p><p>Sobre as mensalidades consultivas ainda não vencidas aplica-se multa de <b>20%</b>, sem incluir o diagnóstico ou parcelas já vencidas. A multa não se aplica em caso de descumprimento relevante não corrigido após notificação.</p></div></div>
-      </div>
-    </section>
-
-    <section class="section section--dark" id="continuidade">
-      <div class="container consultive-close">
-        <div class="consultive-close__copy reveal"><span class="eyebrow">Continuidade consultiva</span><h2 class="h1">O diagnóstico mostra o caminho.<br>A próxima etapa é transformar prioridades em execução.</h2><p>Minha atuação terá caráter consultivo e compreenderá a definição de prioridades, a coordenação dos profissionais envolvidos, o acompanhamento dos prazos e a validação das entregas à luz deste diagnóstico.</p></div>
-        <div class="consultive-close__terms reveal"><strong>Modelo de atuação</strong>Os serviços técnicos necessários à implementação das recomendações serão executados por profissionais ou fornecedores especializados, contratados pela <b>Ocupacional SS</b>. Os respectivos custos serão previamente submetidos à aprovação e integralmente suportados pela empresa.<br><a class="contact-pill" href="https://wa.me/5511982560176">WhatsApp · (11) 98256-0176</a></div>
+    <section class="section section--dark diagnostic-download" id="apresentacao">
+      <div class="container diagnostic-download__grid">
+        <div class="reveal"><span class="eyebrow">Material de apresentação</span><h2 class="h1">Leve o diagnóstico<br>para a conversa executiva.</h2><p>A apresentação reúne os principais achados, o ICP construído, a persona decisora, as prioridades e o plano de avanço em formato de slides.</p></div>
+        <div class="diagnostic-download__actions reveal"><a class="btn diagnostic-download__primary" href="apresentacao-rpd360-ocupacional-ss.pdf" download>Baixar apresentação em PDF ↓</a><a class="btn diagnostic-download__secondary" href="apresentacao.html">Abrir versão interativa →</a><small>Arquivo em formato 16:9 · conteúdo exclusivamente diagnóstico.</small></div>
       </div>
     </section>
   </main>
