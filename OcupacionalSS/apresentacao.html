@@ -255,6 +255,29 @@
       fitAll();
     })();
   </script>
+  <style>
+    .roadmap + .example{margin-top:12px;padding:12px 18px;font-size:.68rem;line-height:1.35}
+  </style>
+  <script>
+    (()=>{
+      const revisions=new Map([
+        ['O marco indica a previsão de conclusão da preparação ou implantação inicial — não o fim da frente. Conteúdo, mensuração e melhoria contínua atravessam todo o programa.','Os marcos são referências de planejamento, não garantia de implantação. O RPD360 responde pelas orientações e revisões estratégicas previstas; a execução depende da empresa e de seus fornecedores.'],
+        ['Configuração inicial nas semanas 1 e 2; orientação até a semana 3; adoção estabilizada no segundo mês e uso contínuo.','Estrutura recomendada e apoio à configuração nas semanas 1 e 2; orientação até a semana 3; acompanhamento consultivo da adoção no segundo mês.'],
+        ['Briefing crítico no mês 1, plano com o fornecedor no mês 2 e implantação prioritária prevista até o mês 4.','Briefing crítico no mês 1 e revisão estratégica do plano do fornecedor no mês 2. Execução e prazos cabem à empresa e ao fornecedor.'],
+        ['O diagnóstico mostra o caminho. A próxima etapa é transformar prioridades em execução.','O diagnóstico mostra o caminho. A próxima etapa é orientar e acompanhar a execução.'],
+        ['Minha atuação terá caráter consultivo e compreenderá a definição de prioridades, a coordenação dos profissionais envolvidos, o acompanhamento dos prazos e a validação das entregas à luz deste diagnóstico.','Minha atuação terá caráter consultivo: definição de prioridades, orientação dos responsáveis, acompanhamento dos marcos e revisão da aderência estratégica das entregas a este diagnóstico.'],
+        ['Os serviços técnicos necessários à implementação das recomendações serão executados por profissionais ou fornecedores especializados, contratados pela Ocupacional SS. Os respectivos custos serão previamente submetidos à aprovação e integralmente suportados pela empresa.','A Ocupacional SS mantém as decisões e aprovações. Os serviços técnicos serão executados e tecnicamente respondidos por sua equipe ou por fornecedores contratados diretamente pela empresa, inclusive quanto a qualidade, custos e prazos.']
+      ]);
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+      while(walker.nextNode()){const value=walker.currentNode.nodeValue.trim();if(revisions.has(value))walker.currentNode.nodeValue=walker.currentNode.nodeValue.replace(value,revisions.get(value));}
+      const note=document.querySelector('.roadmap + .example');
+      if(note)note.innerHTML='<b>Divisão de responsabilidades:</b> o RPD360 diagnostica, prioriza, orienta e revisa aderência estratégica. A <strong class="company-name">Ocupacional SS</strong> decide, aprova e mantém o fluxo atualizado. Equipes e fornecedores executam e respondem tecnicamente por qualidade e prazos.';
+      const closingQuote=document.querySelector('.closing-slide .quote');
+      if(closingQuote)closingQuote.innerHTML='O diagnóstico mostra o caminho. A próxima etapa é <em>orientar e acompanhar a execução.</em>';
+      const closingScope=document.querySelector('.closing-slide .scope-note');
+      if(closingScope)closingScope.innerHTML='A <strong>Ocupacional SS</strong> mantém as decisões e aprovações. Os serviços técnicos serão executados e tecnicamente respondidos por sua equipe ou por fornecedores contratados diretamente pela empresa, inclusive quanto a qualidade, custos e prazos.';
+    })();
+  </script>
 </body>
 </html>
 

@@ -162,5 +162,25 @@
       desktop.addEventListener('change',activate);addEventListener('resize',()=>desktop.matches&&fit(),{passive:true});addEventListener('load',activate,{once:true});if(document.readyState==='complete')activate();
     })();
   </script>
+  <script>
+    (()=>{
+      const revisions=new Map([
+        ['Governança da evolução para manter estratégia, profissionais, fornecedores e entregas na mesma direção.','Governança consultiva para manter estratégia, profissionais, fornecedores e entregas na mesma direção.'],
+        ['Responsáveis, dependências e prazos','Responsáveis, dependências e marcos'],
+        ['Orientação e validação das entregas','Orientação e revisão de aderência estratégica'],
+        ['Direção não é execução ilimitada.','Direção consultiva não é execução técnica.'],
+        ['Desenvolvimento, mídia, produção recorrente e demais atividades técnicas permanecem com a equipe do cliente ou com fornecedores especializados. O RPD360 organiza prioridades, orienta decisões e acompanha a qualidade do avanço.','O RPD360 diagnostica, prioriza, orienta e revisa a aderência estratégica do avanço. Decisões e aprovações permanecem com a empresa; atividades técnicas são executadas e tecnicamente respondidas pela equipe do cliente ou por fornecedores especializados.'],
+        ['O diagnóstico pode ser contratado como projeto pontual. Quando a empresa precisa transformar as recomendações em execução coordenada, a continuidade consultiva é estruturada em ciclos.','O diagnóstico pode ser contratado como projeto pontual. Quando a empresa precisa orientar a execução das recomendações por sua equipe e seus fornecedores, a continuidade consultiva é estruturada em ciclos.'],
+        ['Governança visual, orientação das equipes, acompanhamento de dependências e validação das entregas.','Governança visual, orientação das equipes, acompanhamento de dependências e revisão de aderência estratégica.'],
+        ['A continuidade não transforma o consultor em gestor interno nem transfere a ele a execução diária. Decisões, aprovações, atualização operacional das demandas e contratação de especialistas permanecem sob responsabilidade da empresa.','A continuidade não transforma o consultor em gestor interno nem transfere a ele a execução diária, a direção técnica ou os prazos de terceiros. Decisões, aprovações, atualização das demandas, contratação de especialistas e aceite técnico permanecem com a empresa.'],
+        ['Quando contratado, o trabalho continua na coordenação e validação das iniciativas recomendadas.','Quando contratado, o trabalho continua na orientação dos responsáveis, no acompanhamento de marcos e na revisão de aderência estratégica.'],
+        ['Sim. O diagnóstico é uma entrega autônoma. A continuidade consultiva é opcional e pode ser estruturada quando a empresa precisar de apoio para transformar as prioridades em execução coordenada.','Sim. O diagnóstico é uma entrega autônoma. A continuidade consultiva é opcional e orienta e acompanha a execução realizada pela empresa e por seus fornecedores.'],
+        ['O núcleo do trabalho é estratégico e consultivo. Desenvolvimento, operação de mídia, produção recorrente e outras especialidades são executados pela equipe do cliente ou por fornecedores contratados, com orientação e validação quando previstas no escopo.','O núcleo do trabalho é estratégico e consultivo. As especialidades técnicas são executadas e respondidas pela equipe do cliente ou por fornecedores. Quando previsto, o RPD360 orienta o briefing e revisa aderência estratégica, sem homologação técnica.']
+      ]);
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+      while(walker.nextNode()){const value=walker.currentNode.nodeValue.trim();if(revisions.has(value))walker.currentNode.nodeValue=walker.currentNode.nodeValue.replace(value,revisions.get(value));}
+    })();
+  </script>
 </body>
 </html>
+

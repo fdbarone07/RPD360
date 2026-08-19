@@ -556,5 +556,20 @@
       desktop.addEventListener('change',activate);addEventListener('resize',()=>desktop.matches&&fit(),{passive:true});addEventListener('load',activate,{once:true});if(document.readyState==='complete')activate();
     })();
   </script>
+  <script>
+    (()=>{
+      const revisions=new Map([
+        ['horizontes de execução: 0–30, 31–90 e 90+ dias','horizontes recomendados: 0–30, 31–90 e 90+ dias'],
+        ['As frentes começam juntas.','As frentes podem começar juntas.'],
+        ['Conteúdo e orientação começam no primeiro mês. Trello, site, mensuração e mídia avançam em paralelo, respeitando dependências técnicas e decisões da empresa.','O plano recomenda início paralelo das frentes. A sequência efetiva depende das prioridades aprovadas, dos acessos e da capacidade de execução da Ocupacional SS e de seus fornecedores.'],
+        ['Estrutura e configuração inicial nas semanas 1 e 2; orientação da equipe até a semana 3; adoção estabilizada até o fim do segundo mês e uso contínuo depois disso.','Estrutura recomendada e apoio à configuração nas semanas 1 e 2; orientação até a semana 3; acompanhamento consultivo da adoção no segundo mês. A atualização rotineira permanece com a equipe.'],
+        ['Briefing das correções críticas no primeiro mês, plano com o fornecedor no segundo e implantação prioritária prevista até o quarto mês.','Briefing crítico no primeiro mês e revisão estratégica do plano do fornecedor no segundo. A execução e seus prazos pertencem à Ocupacional SS e ao fornecedor contratado.'],
+        ['o marco indica a previsão para concluir a preparação ou implantação inicial de cada frente — não o fim do trabalho. Conteúdo, mensuração e melhoria contínua atravessam todo o programa. Prazos de execução técnica dependem de aprovações, acessos, orçamento e fornecedores da Ocupacional SS.','os marcos são referências de planejamento, não garantia de implantação. O RPD360 responde por briefings, orientações e revisões estratégicas previstas; decisões e aprovações cabem à Ocupacional SS, e execução técnica, qualidade e prazos cabem à equipe ou aos fornecedores contratados.']
+      ]);
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+      while(walker.nextNode()){const value=walker.currentNode.nodeValue.trim();if(revisions.has(value))walker.currentNode.nodeValue=walker.currentNode.nodeValue.replace(value,revisions.get(value));}
+    })();
+  </script>
 </body>
 </html>
+
